@@ -5,13 +5,15 @@ public class Contas implements ContaInterface {
 	private static final int AGENCIA_PADRAO = 1;
 	private static int SEQUENCIAL = 1;
 	
-	private int agencia;
-	private int numeroConta;
-	private double saldo;
+	protected int agencia;
+	protected int numeroConta;
+	protected double saldo;
+	protected Clientes cliente;
 	
-	public Contas() {
+	public Contas(Clientes cliente) {
 		this.agencia = AGENCIA_PADRAO;
 		this.numeroConta = SEQUENCIAL++;
+		this.cliente = cliente;
 	}
 	
 	public int getAgencia() {
@@ -27,20 +29,32 @@ public class Contas implements ContaInterface {
 	}
 	@Override
 	public void sacar(Double valor) {
-		// TODO Auto-generated method stub
-		
+		this.saldo -= valor;
 	}
 
 	@Override
 	public void depositar(Double valor) {
-		// TODO Auto-generated method stub
-		
+		this.saldo += valor;
 	}
 
 	@Override
-	public void transferir(Double valor, Contas conta) {
-		// TODO Auto-generated method stub
-		
+	public void transferir(Double valor, Contas contaDestino) {
+		this.sacar(valor);
+		contaDestino.depositar(valor);
 	}
+	
+	@Override
+	public void imprimirExtrato() {
+		imprimirAgenciaContaSaldo();
+	}
+
+	protected void imprimirAgenciaContaSaldo() {
+		System.out.println(String.format("Correntista: %s", this.cliente.getNome()));
+		System.out.println(String.format("Agencia: %d", this.agencia));
+		System.out.println(String.format("Conta: %d", this.numeroConta));
+		System.out.println(String.format("Saldo da conta = %.2f", getSaldo()));
+	}
+	
+	
 
 }

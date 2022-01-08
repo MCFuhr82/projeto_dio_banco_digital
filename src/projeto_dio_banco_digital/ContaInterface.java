@@ -7,4 +7,6 @@ public interface ContaInterface {
 	void depositar(Double valor);
 	
 	void transferir(Double valor, Contas conta);
+	
+	void imprimirExtrato();
 }
