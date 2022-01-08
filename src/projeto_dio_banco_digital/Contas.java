@@ -2,9 +2,17 @@ package projeto_dio_banco_digital;
 
 public class Contas implements ContaInterface {
 
+	private static final int AGENCIA_PADRAO = 1;
+	private static int SEQUENCIAL = 1;
+	
 	private int agencia;
 	private int numeroConta;
 	private double saldo;
+	
+	public Contas() {
+		this.agencia = AGENCIA_PADRAO;
+		this.numeroConta = SEQUENCIAL++;
+	}
 	
 	public int getAgencia() {
 		return agencia;
