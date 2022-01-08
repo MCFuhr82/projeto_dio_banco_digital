@@ -2,10 +2,22 @@ package projeto_dio_banco_digital;
 
 public class ContaPoupanca {
 
-	public int agencia;
-	public int numeroContaPoupanca;
-	public double saldo;
+	private int agencia;
+	private int numeroContaPoupanca;
+	private double saldo;
 	
+	public int getAgencia() {
+		return agencia;
+	}
+
+	public int getNumeroContaPoupanca() {
+		return numeroContaPoupanca;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
 	public void sacar() {
 		
 	}
